@@ -1,18 +1,17 @@
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 public class CodonProfilerTest {
 
-	private IDnaStrand myTestStrand;
-	private CodonProfiler myProfiler;
+	private static IDnaStrand myTestStrand;
+	private static CodonProfiler myProfiler;
 	
-	public IDnaStrand getEmptyStrand() {
+	public static IDnaStrand getEmptyStrand() {
 		return new StringStrand();
 	}
 	
-	@Before
-	public void setUp() {
+	@BeforeAll
+	public static void setUp() {
 		String str = "cgacgacgatagtagtagtagcgacgacgacga";
 		myTestStrand = getEmptyStrand();
 		myTestStrand.initialize(str);

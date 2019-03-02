@@ -32,7 +32,7 @@ public class TestIterator {
 		}
 		double end = System.nanoTime();
 		double time = (end-start)/1e9;
-		System.err.printf("DEBUG time to create %d size = %2.3f\n", ourStrand.size(),time);
+		System.err.printf("DEBUG, NOT AN ERROR: time to create %d size = %2.3f\n", ourStrand.size(),time);
 	}
 
 	@Test
