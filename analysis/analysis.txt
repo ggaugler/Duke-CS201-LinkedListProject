@@ -3,8 +3,13 @@ Your NetID here
 Your Partner's name here (or erase)
 Your Partner's NetID here (or erase)
 
+BE SURE TO READ This document which has detailed diagrams: http://bit.ly/201spring19-dna-analysis
+
 In answering these questions you should refer to the timings you generated from the 
 DNABenchmark program on your machine. Use these timings to answer three questions.
+
+The first two questions can be answered before coding and must be answered, 
+pushed to Git and Gradescope, before spring break starts.
 
 Question 1: are the benchmark timings for StringStrand consistent with the explanation 
 below that the time to execute cutAndSplice is O(b2S)? 
