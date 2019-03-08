@@ -1,5 +1,5 @@
-Your Name here
-Your NetID here
+Geoff Gaugler
+gg102
 Your Partner's name here (or erase)
 Your Partner's NetID here (or erase)
 
@@ -18,12 +18,62 @@ Note that the value of b is half the number of calls to append since each cut (e
 is modeled by two calls of append in the method cutAndSplice -- see the code. 
 This means that b2 will be constant in the benchmark, but S will vary. 
 
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	                splicee	      recomb	time	appends
+-----
+StringStrand:	            256	      4,800,471	0.698	1290
+StringStrand:	            512	      4,965,591	0.668	1290
+StringStrand:	          1,024	      5,295,831	0.792	1290
+StringStrand:	          2,048	      5,956,311	0.861	1290
+StringStrand:	          4,096	      7,277,271	0.991	1290
+StringStrand:	          8,192	      9,919,191	1.460	1290
+StringStrand:	         16,384	     15,203,031	2.853	1290
+StringStrand:	         32,768	     25,770,711	4.988	1290
+StringStrand:	         65,536	     46,906,071	7.664	1290
+StringStrand:	        131,072	     89,176,791	15.171	1290
+StringStrand:	        262,144	    173,718,231	32.292	1290
+StringStrand:	        524,288	    342,801,111	65.659	1290
+StringStrand:	      1,048,576	    680,966,871	115.090	1290
+
+Yes the timings are consistent with that for the most part, especially once you get to splicees of size 8,192. B^2 will be constant in the benchmark so we only have to worry about S. When S=131,072, the time is 32.292.
+When S = 65,536, half that, the time is 7.664, roughly half of that. Meanwhile when S= 262,144, double the first S, the time is 65.659, roughly double the first time.
+As the time complexity predicts, there is a direct relationship between S and the time. However, there are some instances when the times aren't consistent with this. 
+For example, when S = 256, the time is .698, but when S = 512, double that S, the time drops down to .668.
+
 Question 2: are the benchmark timings for StringBuilderStrand consistent with the 
 explanation below that the time to execute cutAndSplice is O(bS)? 
 
 Note that the value of b is half the number of calls to append since each cut (except the first) 
 is modeled by two calls of append in the method cutAndSplice -- see the code. 
 This means that b will be constant in the benchmark, but S will vary. 
+
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	                splicee	      recomb	time	appends
+-----
+StringBuilderStrand:	            256	      4,800,471	0.045	1290
+StringBuilderStrand:	            512	      4,965,591	0.051	1290
+StringBuilderStrand:	          1,024	      5,295,831	0.015	1290
+StringBuilderStrand:	          2,048	      5,956,311	0.014	1290
+StringBuilderStrand:	          4,096	      7,277,271	0.009	1290
+StringBuilderStrand:	          8,192	      9,919,191	0.010	1290
+StringBuilderStrand:	         16,384	     15,203,031	0.017	1290
+StringBuilderStrand:	         32,768	     25,770,711	0.037	1290
+StringBuilderStrand:	         65,536	     46,906,071	0.075	1290
+StringBuilderStrand:	        131,072	     89,176,791	0.070	1290
+StringBuilderStrand:	        262,144	    173,718,231	0.197	1290
+StringBuilderStrand:	        524,288	    342,801,111	0.324	1290
+StringBuilderStrand:	      1,048,576	    680,966,871	0.603	1290
+
+Yes, the timings are consistent with that for the most part, especially when the size of the splicee gets up to 8,192. For example,
+when S=524,288, the time is .324. When S = 1,048,576, double that S, the time is .603, roughly double that time. 
+As the time complexity predicts, there is a direct relationship between S and the time. There are some places where
+the timings aren't consistent though, for example when S = 512 the time is .051 but when S=1024, double that S, 
+the time is .015, less than half the previous time.
+
 
 Question 3: Explain why the time for LinkStrand does not change much at all over all 
 the runs in the benchmark program. Explain why you think memory is exhausted at 
