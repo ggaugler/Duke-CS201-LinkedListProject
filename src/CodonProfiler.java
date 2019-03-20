@@ -34,6 +34,15 @@ public class CodonProfiler {
 				}
 			}
 		}
+		//return ret;
+		for (int k=0; k < codons.length; k++) {
+			map.putIfAbsent(codons[k],0);
+			map.put(codons[k],map.get(codons[k])+1);
+		}
+		for (int k=0; k < codons.length; k++) {
+			ret[k] = map.get(codons[k]);
+		}
 		return ret;
 	}
+	
 }
