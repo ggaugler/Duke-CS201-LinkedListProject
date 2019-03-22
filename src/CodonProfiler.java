@@ -48,8 +48,7 @@ public class CodonProfiler {
 				map.putIfAbsent(cod,0);
 				map.put(cod,map.get(cod)+1);
 				}
-			
-		System.out.println(map);
+		
 		
 		for (int i=0; i < codons.length; i++) {
 			if (! map.containsKey(codons[i])) {
@@ -58,10 +57,6 @@ public class CodonProfiler {
 			else {
 				ret[i] = map.get(codons[i]);
 			}
-		}
-		
-		for (int i=0;i<ret.length;i++) {
-			System.out.println(ret[i]);
 		}
 		
 		return ret;
