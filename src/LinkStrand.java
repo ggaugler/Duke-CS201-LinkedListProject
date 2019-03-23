@@ -2,7 +2,6 @@
 //Ashley Lanzas
 
 public class LinkStrand implements IDnaStrand {
-
 	private class Node//Node class
 	{
 		String info;
@@ -22,17 +21,14 @@ public class LinkStrand implements IDnaStrand {
 	
 	public LinkStrand() { //sets default value to an empty string
 		this("");
-	}
-	
+	}	
 	public LinkStrand(String a) { //calls initialize method
 		initialize(a);
-	}
-	
+	}	
 	@Override
 	public long size() { //overridden size method returns the size of LinkStrand
 		return mySize;
-	}
-	
+	}	
 	@Override //initializes variables for the object LinkStrand
 	public void initialize(String source) 
 	{
@@ -43,13 +39,11 @@ public class LinkStrand implements IDnaStrand {
 		myIndex = 0;
 		myLocalIndex = 0;
 		myCurrent = myFirst;
-	}
-	
+	}	
 	@Override
 	public IDnaStrand getInstance(String source){
 		return new LinkStrand(source);
-	}
-	
+	}	
 	@Override
 	public IDnaStrand append(String dna)
 	{
@@ -58,16 +52,14 @@ public class LinkStrand implements IDnaStrand {
 		mySize += myLast.info.length();
 		myAppends += 1;
 		return this;
-	}
-	
+	}	
 	private void appendToFront(String dna)
 	{
 		Node temp = new Node(dna);
 		this.mySize += temp.info.length();
 		temp.next = myFirst;
 		myFirst = temp;
-	}
-	
+	}	
 	@Override
 	public IDnaStrand reverse()
 	{
@@ -81,19 +73,17 @@ public class LinkStrand implements IDnaStrand {
 			guy = guy.next;	
 		}
 		return guy1;
-	}
-	
+	}	
 	@Override 
 	public int getAppendCount(){
 		return myAppends;
-	}
-	
+	}	
 	@Override
 	public char charAt(int index)
 	{
-		if(0 > index || myIndex >= this.size()) {
-			throw new IndexOutOfBoundsException();
-		}
+//		if(0 > index || myIndex >= this.size()) {
+//			throw new IndexOutOfBoundsException();
+//		}
 		if (myIndex >= index)
 		{
 			myIndex = 0;
@@ -110,8 +100,7 @@ public class LinkStrand implements IDnaStrand {
 			}	
 		}
 		return myCurrent.info.charAt(myLocalIndex);
-	}
-	
+	}	
 	@Override
 	public String toString() 
 	{
