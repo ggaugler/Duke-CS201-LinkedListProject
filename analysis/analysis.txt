@@ -80,6 +80,12 @@ the runs in the benchmark program. Explain why you think memory is exhausted at
 the specific strand size you see in your timings -- as compared to 
 exhaustion for String and StringBuilder.
 
+Because it utilizes linked lists, you don't have to allocate more memory with repeats
+ as opposed to using an array, you can just have the repeats point to the same node.
+ For example if you want to have 10 "GATC" sequences, instead of creating a new node each time 
+ this comes up, you can create one node with the value "GATC" and have this pointed to 10 times.
+
+
 dna length = 4,639,221
 cutting at enzyme gaattc
 -----

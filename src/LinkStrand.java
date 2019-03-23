@@ -6,8 +6,8 @@ public class LinkStrand implements IDnaStrand {
 	{
 		String info;
 		Node next;
-		public Node(String s) {
-			info = s;
+		public Node(String guy) {
+			info = guy;
 			next = null;
 		}
 	}	
@@ -55,10 +55,10 @@ public class LinkStrand implements IDnaStrand {
 	}	
 	private void appendToFront(String dna)
 	{
-		Node temp = new Node(dna);
-		this.mySize += temp.info.length();
-		temp.next = myFirst;
-		myFirst = temp;
+		Node guy = new Node(dna);
+		this.mySize += guy.info.length();
+		guy.next = myFirst;
+		myFirst = guy;
 	}	
 	@Override
 	public IDnaStrand reverse()
@@ -81,9 +81,9 @@ public class LinkStrand implements IDnaStrand {
 	@Override
 	public char charAt(int index)
 	{
-//		if(0 > index || myIndex >= this.size()) {
-//			throw new IndexOutOfBoundsException();
-//		}
+		if(0 > index || this.size() <= myIndex) {
+			throw new IndexOutOfBoundsException();
+		}
 		if (myIndex >= index)
 		{
 			myIndex = 0;
@@ -115,5 +115,3 @@ public class LinkStrand implements IDnaStrand {
 		return guy.toString();
 	}	
 }
-	
-	
